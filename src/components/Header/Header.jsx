@@ -9,7 +9,7 @@ const Header = () => {
           <Link to="movies">Movies</Link>
         </li>
         <li>
-          <Link to="movies/:movieId">Movies-Id</Link>
+          <Link to="/">Home</Link>
         </li>
       </ul>
     </>

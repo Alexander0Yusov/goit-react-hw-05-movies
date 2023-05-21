@@ -1,5 +1,22 @@
 .card {
-  width: 100px;
+  // width: 100%;
+  display: flex;
 
   outline: 1px solid tomato;
+}
+
+.thumb {
+  width: 200px;
+  height: 300px;
+  margin-right: 8px;
+
+  & img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.description {
+  width: 600px;
 }

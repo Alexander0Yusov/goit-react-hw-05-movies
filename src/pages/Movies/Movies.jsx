@@ -9,6 +9,8 @@ const Movies = () => {
         <input></input>
         <button type="submit">Search</button>
       </form>
+
+      <ul className="gallery"></ul>
     </>
   );
 };
