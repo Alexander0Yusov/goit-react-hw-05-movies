@@ -9,6 +9,7 @@ import Movies from 'pages/Movies/Movies';
 import SharedLayout from 'pages/SharedLayout/SharedLayout';
 import Card from './Card/Card';
 import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
 
 export const App = () => {
   return (
@@ -18,7 +19,7 @@ export const App = () => {
         <Route path="movies" element={<Movies />} />
         <Route path="movies/:movieId" element={<Card />}>
           <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<div>Reviews</div>} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="*" element={<div>Layout not found</div>} />
       </Route>

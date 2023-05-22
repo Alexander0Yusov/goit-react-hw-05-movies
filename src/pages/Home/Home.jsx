@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import css from './Home.module.scss';
-import HomeItem from 'components/HomeItem/HomeItem';
+import { Link, useLocation } from 'react-router-dom';
 
 const Home = () => {
   const [dayTrends, setDayTrends] = useState('');
+  const location = useLocation();
 
   useEffect(() => {
     const getTrends = () => {
@@ -32,7 +33,9 @@ const Home = () => {
           dayTrends.map(({ id, title }) => {
             return (
               <li key={id}>
-                <HomeItem id={id} title={title} />
+                <Link to={`movies/${id}`} state={{ from: location }}>
+                  {title}
+                </Link>
               </li>
             );
           })}

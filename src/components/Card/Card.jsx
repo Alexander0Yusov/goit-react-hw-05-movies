@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import css from './Card.module.scss';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
@@ -7,7 +7,12 @@ const Card = () => {
   const [dataMovie, setDataMovie] = useState('');
   const [genres, setGenres] = useState('');
   const location = useLocation();
-  // const isFetchDone = useRef(false);
+  const prevPath = useRef('');
+
+  useEffect(() => {
+    prevPath.current = location;
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     setMovieId(location.pathname.split('/')[2]);
@@ -20,7 +25,7 @@ const Card = () => {
       )
         .then(res => res.json())
         .then(res => {
-          console.log(res);
+          // console.log(res);
           const {
             release_date,
             poster_path,
@@ -55,9 +60,23 @@ const Card = () => {
     }
   }, [dataMovie]);
 
+  const clickHandler = () => {
+    // console.log(location);
+    // console.log(prevPath.current);
+  };
+
   return (
     // { release_date, poster_path, vote_average, genres, overview }
+    // location.state?|если такое свойство существует, то берем вложенное-|.from
     <>
+      <Link
+        onClick={clickHandler}
+        to={prevPath.current.state?.from}
+        className={css.linkBack}
+      >
+        Go back
+      </Link>
+
       <div className={css.card}>
         <div className={css.thumb}>
           <img

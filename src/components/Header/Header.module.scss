@@ -1,0 +1,20 @@
+.headerUl {
+  display: flex;
+  gap: 12px;
+}
+
+.headerLi {
+  color: black;
+  display: block;
+  padding: 4px 8px;
+}
+
+.headerLink {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.isActive {
+  color: darkred;
+}
