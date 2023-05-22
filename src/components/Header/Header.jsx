@@ -11,6 +11,7 @@ const Header = () => {
     const movies = document.querySelector('[href="/movies"]');
 
     const resetColor = () => {
+      // eslint-disable-next-line
       [home, movies].map(item => {
         if (item.classList.contains(`${css.isActive}`)) {
           item.classList.remove(`${css.isActive}`);
@@ -28,11 +29,11 @@ const Header = () => {
     }
   }, [location.pathname]);
 
-  const handlerClick = e => {
-    // console.log(e.target);
-    // ref.current.setAttribute('data-foo', 'bar');
-    // console.log(ref.current.getAttribute('data-foo'));
-  };
+  // const handlerClick = e => {
+  // console.log(e.target);
+  // ref.current.setAttribute('data-foo', 'bar');
+  // console.log(ref.current.getAttribute('data-foo'));
+  // };
 
   return (
     <>
@@ -42,19 +43,13 @@ const Header = () => {
             ref={ref}
             to="/"
             className={css.headerLink}
-            onClick={handlerClick}
             data-navigate="home"
           >
             Home
           </Link>
         </li>
         <li className={css.headerLi}>
-          <Link
-            to="movies"
-            className={css.headerLink}
-            onClick={handlerClick}
-            data-navigate="movies"
-          >
+          <Link to="movies" className={css.headerLink} data-navigate="movies">
             Movies
           </Link>
         </li>
