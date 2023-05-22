@@ -1,14 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
 import css from './Header.module.scss';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 const Header = () => {
   const location = useLocation();
-  const ref = useRef(null);
 
   useEffect(() => {
     const home = document.querySelector('[href="/"]');
     const movies = document.querySelector('[href="/movies"]');
+    const isHomePage = !location.pathname.split('/').includes('movies');
 
     const resetColor = () => {
       // eslint-disable-next-line
@@ -19,32 +19,21 @@ const Header = () => {
       });
     };
 
-    if (location.pathname === '/') {
+    if (isHomePage) {
       resetColor();
       home.classList.add(`${css.isActive}`);
     }
-    if (location.pathname === '/movies') {
+    if (!isHomePage) {
       resetColor();
       movies.classList.add(`${css.isActive}`);
     }
   }, [location.pathname]);
 
-  // const handlerClick = e => {
-  // console.log(e.target);
-  // ref.current.setAttribute('data-foo', 'bar');
-  // console.log(ref.current.getAttribute('data-foo'));
-  // };
-
   return (
     <>
       <ul className={css.headerUl}>
         <li className={css.headerLi}>
-          <Link
-            ref={ref}
-            to="/"
-            className={css.headerLink}
-            data-navigate="home"
-          >
+          <Link to="/" className={css.headerLink} data-navigate="home">
             Home
           </Link>
         </li>
