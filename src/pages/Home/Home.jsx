@@ -14,10 +14,11 @@ const Home = () => {
         .then(res => res.json())
         .then(res => {
           // console.log(res.results);
-          const params = res.results.map(({ id, title, name }) => {
+          const needed = res.results.map(({ id, title, name }) => {
             return { id, title: name || title };
           });
-          setDayTrends(params);
+          setDayTrends(needed);
+          // console.log(needed);
         })
         .catch(er => console.log(er.message));
     };
@@ -27,13 +28,17 @@ const Home = () => {
 
   return (
     <div className={css.home}>
-      <h3>Gallery 'week trands'</h3>
+      <h2>Trending today</h2>
       <ul>
         {dayTrends &&
           dayTrends.map(({ id, title }) => {
             return (
               <li key={id}>
-                <Link to={`movies/${id}`} state={{ from: location }}>
+                <Link
+                  className={css.link}
+                  to={`movies/${id}`}
+                  state={{ from: location }}
+                >
                   {title}
                 </Link>
               </li>

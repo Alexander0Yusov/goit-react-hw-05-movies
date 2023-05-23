@@ -41,27 +41,31 @@ const Cast = () => {
 
   return (
     <div className={css.cast}>
-      <ul className={css.castUl}>
-        {dataCast &&
-          dataCast.map(
-            ({ cast_id, character, original_name, profile_path }) => (
-              <li key={cast_id} className={css.castLi}>
-                <div className={css.thumb}>
-                  {profile_path ? (
-                    <img
-                      src={`https://image.tmdb.org/t/p/original/${profile_path}`}
-                      alt="person portrait"
-                    ></img>
-                  ) : (
-                    '|No photo|'
-                  )}
-                </div>
-                <p>{original_name}</p>
-                <p>Character: {character}</p>
-              </li>
-            )
-          )}
-      </ul>
+      {dataCast.length > 0 ? (
+        <ul className={css.castUl}>
+          {dataCast &&
+            dataCast.map(
+              ({ cast_id, character, original_name, profile_path }) => (
+                <li key={cast_id} className={css.castLi}>
+                  <div className={css.thumb}>
+                    {profile_path ? (
+                      <img
+                        src={`https://image.tmdb.org/t/p/original/${profile_path}`}
+                        alt="person portrait"
+                      ></img>
+                    ) : (
+                      '|No photo|'
+                    )}
+                  </div>
+                  <p>{original_name}</p>
+                  <p>Character: {character}</p>
+                </li>
+              )
+            )}
+        </ul>
+      ) : (
+        'Sorry, No Cast'
+      )}
     </div>
   );
 };
