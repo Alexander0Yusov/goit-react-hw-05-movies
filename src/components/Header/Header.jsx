@@ -1,4 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import css from './Header.module.scss';
 import { useEffect } from 'react';
 
@@ -6,10 +7,11 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const home = document.querySelector('[href="/"]');
-    const movies = document.querySelector('[href="/movies"]');
+    const home = document.querySelector('[data-navigate="home"]');
+    const movies = document.querySelector('[data-navigate="movies"]');
     const isHomePage = !location.pathname.split('/').includes('movies');
 
+    console.log(home, movies);
     const resetColor = () => {
       // eslint-disable-next-line
       [home, movies].map(item => {
@@ -29,20 +31,18 @@ const Header = () => {
     }
   }, [location.pathname]);
 
+  // nav > NavLink 1, 5-00
+  // <Link to="movies".. по клику меняется путь в браузере
   return (
     <>
-      <ul className={css.headerUl}>
-        <li className={css.headerLi}>
-          <Link to="/" className={css.headerLink} data-navigate="home">
-            Home
-          </Link>
-        </li>
-        <li className={css.headerLi}>
-          <Link to="movies" className={css.headerLink} data-navigate="movies">
-            Movies
-          </Link>
-        </li>
-      </ul>
+      <nav className={css.headerNav}>
+        <Link to="/" className={css.headerLink} data-navigate="home">
+          Home
+        </Link>
+        <Link to="movies" className={css.headerLink} data-navigate="movies">
+          Movies
+        </Link>
+      </nav>
     </>
   );
 };

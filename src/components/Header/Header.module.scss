@@ -1,16 +1,12 @@
-.headerUl {
+.headerNav {
+  padding: 12px;
   display: flex;
   gap: 12px;
 }
 
-.headerLi {
-  color: black;
-  display: block;
-  padding: 4px 8px;
-}
-
 .headerLink {
   display: block;
+  padding: 4px 8px;
   text-decoration: none;
   font-weight: 600;
   color: black;

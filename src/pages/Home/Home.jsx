@@ -36,7 +36,7 @@ const Home = () => {
               <li key={id}>
                 <Link
                   className={css.link}
-                  to={`movies/${id}`}
+                  to={`/movies/${id}`}
                   state={{ from: location }}
                 >
                   {title}

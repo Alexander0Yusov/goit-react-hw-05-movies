@@ -1,16 +1,10 @@
 import { useEffect, useState } from 'react';
 import css from './Cast.module.scss';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Cast = () => {
-  const [movieId, setMovieId] = useState('');
   const [dataCast, setDataCast] = useState('');
-  const location = useLocation();
-  // const { movieId } = useParams(); https://api.themoviedb.org/3/movie/{movie_id}/reviews
-
-  useEffect(() => {
-    setMovieId(location.pathname.split('/')[2]);
-  }, [location]);
+  const { movieId } = useParams();
 
   useEffect(() => {
     const getCastMovie = () => {
