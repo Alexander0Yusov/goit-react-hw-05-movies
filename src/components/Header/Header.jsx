@@ -11,7 +11,6 @@ const Header = () => {
     const movies = document.querySelector('[data-navigate="movies"]');
     const isHomePage = !location.pathname.split('/').includes('movies');
 
-    console.log(home, movies);
     const resetColor = () => {
       // eslint-disable-next-line
       [home, movies].map(item => {
@@ -35,14 +34,18 @@ const Header = () => {
   // <Link to="movies".. по клику меняется путь в браузере
   return (
     <>
-      <nav className={css.headerNav}>
-        <Link to="/" className={css.headerLink} data-navigate="home">
-          Home
-        </Link>
-        <Link to="movies" className={css.headerLink} data-navigate="movies">
-          Movies
-        </Link>
-      </nav>
+      <ul className={css.headerUl}>
+        <li className={css.headerLi}>
+          <Link to="/" className={css.headerLink} data-navigate="home">
+            Home
+          </Link>
+        </li>
+        <li className={css.headerLi}>
+          <Link to="movies" className={css.headerLink} data-navigate="movies">
+            Movies
+          </Link>
+        </li>
+      </ul>
     </>
   );
 };

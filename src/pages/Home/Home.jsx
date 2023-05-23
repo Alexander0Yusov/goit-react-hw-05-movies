@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import css from './Home.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 
+// отдельно компонент Gallery выделить из Home, Movies
+// отдельно Form
 const Home = () => {
   const [dayTrends, setDayTrends] = useState('');
   const location = useLocation();
