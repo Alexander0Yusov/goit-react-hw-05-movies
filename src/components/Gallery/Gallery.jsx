@@ -1,5 +1,6 @@
 import css from './Gallery.module.scss';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Gallery = ({ items, location, pathTo }) => {
   return (
@@ -22,3 +23,14 @@ const Gallery = ({ items, location, pathTo }) => {
 };
 
 export default Gallery;
+
+Gallery.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+    })
+  ),
+  location: PropTypes.object,
+  pathTo: PropTypes.string,
+};

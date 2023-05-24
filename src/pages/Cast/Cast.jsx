@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import css from './Cast.module.scss';
 import { useParams } from 'react-router-dom';
+import css from './Cast.module.scss';
+import CastItem from 'pages/CastItem/CastItem';
 
 const Cast = () => {
   const [dataCast, setDataCast] = useState('');
@@ -38,20 +39,12 @@ const Cast = () => {
           {dataCast &&
             dataCast.map(
               ({ cast_id, character, original_name, profile_path }) => (
-                <li key={cast_id} className={css.castLi}>
-                  <div className={css.thumb}>
-                    {profile_path ? (
-                      <img
-                        src={`https://image.tmdb.org/t/p/original/${profile_path}`}
-                        alt="person portrait"
-                      ></img>
-                    ) : (
-                      '|No photo|'
-                    )}
-                  </div>
-                  <p>{original_name}</p>
-                  <p>Character: {character}</p>
-                </li>
+                <CastItem
+                  key={cast_id}
+                  character={character}
+                  original_name={original_name}
+                  profile_path={profile_path}
+                />
               )
             )}
         </ul>

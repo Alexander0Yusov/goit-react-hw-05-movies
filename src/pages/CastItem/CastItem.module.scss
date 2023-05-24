@@ -1,0 +1,13 @@
+.castLi {
+  outline: 1px solid tomato;
+}
+
+.thumb {
+  width: 100px;
+
+  & img {
+    display: block;
+    width: 100px;
+    height: auto;
+  }
+}

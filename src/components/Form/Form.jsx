@@ -1,4 +1,5 @@
 import css from './Form.module.scss';
+import PropTypes from 'prop-types';
 
 const Form = ({ submitHandler, inputHandler, inputValue }) => {
   return (
@@ -12,3 +13,9 @@ const Form = ({ submitHandler, inputHandler, inputValue }) => {
 };
 
 export default Form;
+
+Form.propTypes = {
+  submitHandler: PropTypes.func,
+  inputHandler: PropTypes.func,
+  inputValue: PropTypes.string,
+};

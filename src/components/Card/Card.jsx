@@ -1,4 +1,5 @@
 import css from './Card.module.scss';
+import PropTypes from 'prop-types';
 
 const Card = ({
   posterPath,
@@ -30,3 +31,12 @@ const Card = ({
 };
 
 export default Card;
+
+Card.propTypes = {
+  posterPath: PropTypes.string,
+  title: PropTypes.string,
+  releaseDate: PropTypes.string,
+  voteAverage: PropTypes.string,
+  overview: PropTypes.string,
+  genres: PropTypes.string,
+};

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import css from './Header.module.scss';
 import { useEffect } from 'react';
+import css from './Header.module.scss';
 
 const Header = () => {
   const location = useLocation();

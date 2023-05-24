@@ -43,7 +43,7 @@ const MovieDetails = () => {
 
             setReleaseDate(release_date);
             setPosterPath(poster_path);
-            setVoteAverage(vote_average);
+            setVoteAverage(String(vote_average));
             setGenresIds(genres);
             setOverview(overview);
             setTitle(title);
