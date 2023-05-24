@@ -24,13 +24,13 @@ const Reviews = () => {
         .catch(er => console.log(er.message));
     };
 
-    if (movieId) getReviews();
+    getReviews();
   }, [movieId]);
 
   return (
-    <div className={css.reviews}>
+    <div>
       {reviews.length > 0 ? (
-        <ul>
+        <ul className={css.reviewsUl}>
           {reviews.map(({ id, author, content }) => (
             <li key={id} className={css.reviewLi}>
               <p>Author: {author}.</p>

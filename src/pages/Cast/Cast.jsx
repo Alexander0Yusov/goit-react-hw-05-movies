@@ -28,9 +28,7 @@ const Cast = () => {
         .catch(er => console.log(er.message));
     };
 
-    if (movieId) {
-      getCastMovie();
-    }
+    getCastMovie();
   }, [movieId]);
 
   return (

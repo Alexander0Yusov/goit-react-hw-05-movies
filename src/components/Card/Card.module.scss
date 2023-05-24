@@ -1,15 +1,7 @@
 .card {
   display: flex;
+  flex-wrap: wrap;
   outline: 1px solid tomato;
-}
-
-.linkBack {
-  display: inline-block;
-  margin-bottom: 8px;
-  text-decoration: none;
-  border: 1px solid black;
-  border-radius: 4px;
-  padding: 2px 4px;
 }
 
 .thumb {
@@ -26,4 +18,5 @@
 
 .description {
   width: 600px;
+  padding: 0 12px;
 }
