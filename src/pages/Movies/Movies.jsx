@@ -1,7 +1,9 @@
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import css from './Movies.module.scss';
 
 import { useEffect, useState } from 'react';
+import Gallery from 'components/Gallery/Gallery';
+import Form from 'components/Form/Form';
 
 const Movies = () => {
   const [response, setResponse] = useState([]);
@@ -24,6 +26,7 @@ const Movies = () => {
 
   const submitHandler = async e => {
     e.preventDefault();
+
     inputValue ? await getData() : alert('Enter something, please');
     if (response.length === 0) {
       setResponseStatus('Not found');
@@ -41,35 +44,16 @@ const Movies = () => {
 
   return (
     <>
-      <form className={css.form} onSubmit={submitHandler}>
-        <input
-          className={css.input}
-          value={inputValue}
-          onChange={inputHandler}
-        />
-        <button className={css.submitBtn} type="submit">
-          Search
-        </button>
-      </form>
+      <Form
+        submitHandler={submitHandler}
+        inputHandler={inputHandler}
+        inputValue={inputValue}
+      ></Form>
 
       {response.length !== 0 ? (
-        <ul className={css.gallery}>
-          {response.map(({ id, title }) => {
-            return (
-              <li key={id}>
-                <Link
-                  className={css.link}
-                  to={`${id}`}
-                  state={{ from: location }}
-                >
-                  {title}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <Gallery items={response} location={location} pathTo={''} />
       ) : (
-        <p>{responseStatus} </p>
+        <p className={css.responseParagraph}>{responseStatus} </p>
       )}
     </>
   );

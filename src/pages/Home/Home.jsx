@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import css from './Home.module.scss';
-import { Link, useLocation } from 'react-router-dom';
+import Gallery from 'components/Gallery/Gallery';
 
-// отдельно компонент Gallery выделить из Home, Movies
-// отдельно Form
 const Home = () => {
   const [dayTrends, setDayTrends] = useState('');
   const location = useLocation();
@@ -30,23 +29,10 @@ const Home = () => {
 
   return (
     <div className={css.home}>
-      <h2>Trending today</h2>
-      <ul>
-        {dayTrends &&
-          dayTrends.map(({ id, title }) => {
-            return (
-              <li key={id}>
-                <Link
-                  className={css.link}
-                  to={`/movies/${id}`}
-                  state={{ from: location }}
-                >
-                  {title}
-                </Link>
-              </li>
-            );
-          })}
-      </ul>
+      <h3 className={css.title}>Trending today</h3>
+      {dayTrends && (
+        <Gallery items={dayTrends} location={location} pathTo={'/movies/'} />
+      )}
     </div>
   );
 };
